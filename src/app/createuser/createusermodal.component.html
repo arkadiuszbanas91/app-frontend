@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create user</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <form class="form-inline">
+        <input type="text" placeholder="username" class="form-control mb-2 mr-sm-2" id="username" name="username" [(ngModel)]="user.username"/>
+        <input type="password" placeholder="password" class="form-control mb-2 mr-sm-2" id="password" name="password" [(ngModel)]="user.password"/>
+        <div class="form-check mb-2 mr-sm-2">
+            <input class="form-check-input" type="checkbox" id="enabled" name="enabled" [(ngModel)]="user.enabled">
+            <label class="form-check-label" for="inlineFormCheck">Enabled</label>
+        </div>
+    </form>
+    <div class="alert alert-warning" role="alert" *ngIf="error">
+      {{error}}
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="activeModal.close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="createUser()">Create</button>
+  </div>

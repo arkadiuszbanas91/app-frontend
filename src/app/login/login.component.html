@@ -1,0 +1,19 @@
+
+<form class="row row-cols-lg-auto g-3" (submit)="login()" *ngIf="!(auth.isAuthenticated | async)">
+	<div class="col-12">
+		<label class="visually-hidden" for="username">Username</label>
+		<input type="text" placeholder="Enter your username" class="form-control" id="username" name="username" [(ngModel)]="username"/>
+	</div>
+	<div class="col-12">
+		<label class="visually-hidden" for="password">Password</label>
+		<input type="password" placeholder="Enter your password" class="form-control" id="password" name="password" [(ngModel)]="password"/>
+	</div>
+	<div class="col-12">
+		<button type="submit" class="btn btn-primary">Login</button>
+	</div>
+</form>
+<form class="row row-cols-lg-auto g-3" (submit)="logout()" *ngIf="(auth.isAuthenticated | async)">
+	<div class="col-12">
+		<button class="btn btn-primary my-2 my-sm-0" (click)="logout()">Logout @{{auth.currentUser.username}}</button>
+	</div>
+</form>

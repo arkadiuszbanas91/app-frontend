@@ -1,0 +1,12 @@
+.contentBox {
+    padding: 1.5rem;
+}
+
+.actionButton {
+    margin: 0 0.25rem 0 0;
+    min-width: 5.5rem;
+}
+
+.actionButton > i {
+    padding-right: 0.25rem;
+}

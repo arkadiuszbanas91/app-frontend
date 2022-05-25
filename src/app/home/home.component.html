@@ -1,0 +1,37 @@
+<div class="container contentBox">
+	<div class="card card-body" *ngIf="(auth.isAuthenticated | async)">
+		<h4 class="card-title">Manage users</h4>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				<th scope="col">#</th>
+				<th scope="col">Username</th>
+				<th scope="col">Status</th>
+				<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let user of users; index as i">
+					<tr>
+						<th scope="row">{{i}}</th>
+						<td>{{user.username}}</td>
+						<td>{{user.enabled ? 'Enabled' : 'Disabled'}}</td>
+						<td>
+							<button type="button" class="btn btn-sm btn-primary actionButton" [attr.disabled]="currentUser().username == user.username ? '' : null" (click)="changeUserStatus(user)">
+								<i class="bi bi-x" *ngIf="user.enabled"></i><i class="bi bi-check" *ngIf="!user.enabled"></i>
+								{{user.enabled ? 'Disable' : 'Enable'}}
+							</button>
+							<button type="button" class="btn btn-sm btn-primary actionButton" [attr.disabled]="currentUser().username == user.username ? '' : null" (click)="removeUser(user)">
+								<i class="bi bi-trash"></i>Remove
+							</button>
+						</td>
+						</tr>
+				</ng-container>
+			</tbody>
+		</table>
+		
+	</div>
+	<div class="card card-body" *ngIf="!(auth.isAuthenticated | async)">
+		<h1 class="text-center card-title"><i class="bi bi-file-lock2"></i>Please log in to manage users.</h1>
+	</div>
+</div>
